@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "name": "AI Infra / 大模型系统 知识图谱",
+    "owner": "FubieLee",
+    "created": "2026-07-27",
+    "updated": "2026-07-27",
+    "version": "0.1",
+    "status_legend": {
+      "not_started": "未开始",
+      "learning": "学习中",
+      "mastered": "已掌握"
+    },
+    "usage": "每完成一个节点的学习并验收通过，将 status 改为 mastered，并在 notes 字段记录笔记路径；每日学习后更新 updated 日期"
+  },
+  "domains": [
+    {
+      "id": "D1",
+      "label": "数学基础",
+      "priority": "P0-地基",
+      "nodes": [
+        { "id": "D1-1", "label": "线性代数（矩阵分解/SVD/特征值）", "status": "not_started", "prereq": [], "resources": ["MIT 18.06", "3Blue1Brown 线性代数"], "notes": "" },
+        { "id": "D1-2", "label": "概率与统计（贝叶斯/分布/采样）", "status": "not_started", "prereq": [], "resources": ["CS229 概率基础"], "notes": "" },
+        { "id": "D1-3", "label": "最优化理论（梯度法/凸优化）", "status": "not_started", "prereq": ["D1-1"], "resources": ["Boyd Convex Optimization 第1-4章"], "notes": "" },
+        { "id": "D1-4", "label": "信息论基础（熵/KL散度）", "status": "not_started", "prereq": ["D1-2"], "resources": ["Cover & Thomas 精选章节"], "notes": "" }
+      ]
+    },
+    {
+      "id": "D2",
+      "label": "系统基础",
+      "priority": "P0-地基",
+      "nodes": [
+        { "id": "D2-1", "label": "操作系统（进程/内存/IO/锁）", "status": "not_started", "prereq": [], "resources": ["OSTEP", "CSAPP"], "notes": "" },
+        { "id": "D2-2", "label": "计算机网络（TCP/IP/RDMA基础）", "status": "not_started", "prereq": [], "resources": ["自顶向下方法", "RDMA 技术白皮书"], "notes": "" },
+        { "id": "D2-3", "label": "计算机体系结构（缓存/内存层次/流水线）", "status": "not_started", "prereq": [], "resources": ["CSAPP 第5-6章"], "notes": "" },
+        { "id": "D2-4", "label": "Linux 与 Shell 实战", "status": "not_started", "prereq": [], "resources": ["MIT Missing Semester"], "notes": "" }
+      ]
+    },
+    {
+      "id": "D3",
+      "label": "编程能力",
+      "priority": "P0-地基",
+      "nodes": [
+        { "id": "D3-1", "label": "Python 进阶（装饰器/生成器/多进程）", "status": "not_started", "prereq": [], "resources": ["Fluent Python"], "notes": "" },
+        { "id": "D3-2", "label": "现代 C++（内存管理/模板/STL）", "status": "not_started", "prereq": [], "resources": ["C++ Primer", "Effective Modern C++"], "notes": "" },
+        { "id": "D3-3", "label": "并行编程（多线程/MPI/OpenMP）", "status": "not_started", "prereq": ["D3-2"], "resources": ["MPI 官方教程"], "notes": "" },
+        { "id": "D3-4", "label": "工程工具链（Git/CMake/GDB/性能分析）", "status": "not_started", "prereq": ["D2-4"], "resources": ["perf/nsys 官方文档"], "notes": "" }
+      ]
+    },
+    {
+      "id": "D4",
+      "label": "GPU 与硬件",
+      "priority": "P1-核心",
+      "nodes": [
+        { "id": "D4-1", "label": "GPU 架构（SM/Tensor Core/HBM/显存层次）", "status": "not_started", "prereq": ["D2-3"], "resources": ["NVIDIA 架构白皮书(Hopper/Blackwell)"], "notes": "" },
+        { "id": "D4-2", "label": "CUDA 编程（kernel/内存/流）", "status": "not_started", "prereq": ["D3-2", "D4-1"], "resources": ["CUDA C++ Programming Guide", "PMPP 教材"], "notes": "" },
+        { "id": "D4-3", "label": "CUDA 性能优化（合并访存/共享内存/占用率）", "status": "not_started", "prereq": ["D4-2"], "resources": ["CUDA Best Practices Guide"], "notes": "" },
+        { "id": "D4-4", "label": "AI 芯片生态（NPU/TPU/ASIC/国产卡）", "status": "not_started", "prereq": ["D4-1"], "resources": ["昇腾/寒武纪公开资料", "TPU 论文"], "notes": "" },
+        { "id": "D4-5", "label": "高速互联（NVLink/PCIe/InfiniBand）", "status": "not_started", "prereq": ["D2-2", "D4-1"], "resources": ["NVLink 技术文档", "IB 架构入门"], "notes": "" }
+      ]
+    },
+    {
+      "id": "D5",
+      "label": "大模型原理",
+      "priority": "P1-核心",
+      "nodes": [
+        { "id": "D5-1", "label": "Transformer 架构（Attention/FFN/位置编码）", "status": "not_started", "prereq": ["D1-1"], "resources": ["Attention Is All You Need", "Karpathy nanoGPT"], "notes": "" },
+        { "id": "D5-2", "label": "预训练机制（数据配比/目标函数/超参）", "status": "not_started", "prereq": ["D5-1"], "resources": ["GPT-3/LLaMA 技术报告"], "notes": "" },
+        { "id": "D5-3", "label": "微调与对齐（SFT/LoRA/RLHF）", "status": "not_started", "prereq": ["D5-2"], "resources": ["InstructGPT 论文", "PEFT 库文档"], "notes": "" },
+        { "id": "D5-4", "label": "MoE 架构（路由/负载均衡/专家并行）", "status": "not_started", "prereq": ["D5-1"], "resources": ["Switch Transformer", "DeepSeek-V3 报告"], "notes": "" },
+        { "id": "D5-5", "label": "推理机制（自回归/KV Cache/采样）", "status": "not_started", "prereq": ["D5-1"], "resources": ["vLLM 博客", "HuggingFace 生成策略文档"], "notes": "" }
+      ]
+    },
+    {
+      "id": "D6",
+      "label": "训练基础设施",
+      "priority": "P1-核心",
+      "nodes": [
+        { "id": "D6-1", "label": "数据并行（DP/DDP）", "status": "not_started", "prereq": ["D5-1"], "resources": ["PyTorch DDP 教程"], "notes": "" },
+        { "id": "D6-2", "label": "张量并行（TP）", "status": "not_started", "prereq": ["D6-1"], "resources": ["Megatron-LM 论文"], "notes": "" },
+        { "id": "D6-3", "label": "流水线并行（PP/1F1B/交错调度）", "status": "not_started", "prereq": ["D6-2"], "resources": ["GPipe/PipeDream 论文"], "notes": "" },
+        { "id": "D6-4", "label": "ZeRO 显存优化（Stage 1/2/3）", "status": "not_started", "prereq": ["D6-1"], "resources": ["ZeRO 论文", "DeepSpeed 教程"], "notes": "" },
+        { "id": "D6-5", "label": "Megatron-LM 框架源码", "status": "not_started", "prereq": ["D6-2", "D6-3"], "resources": ["NVIDIA/Megatron-LM 仓库"], "notes": "" },
+        { "id": "D6-6", "label": "DeepSpeed 框架实战", "status": "not_started", "prereq": ["D6-4"], "resources": ["DeepSpeed 官方示例"], "notes": "" },
+        { "id": "D6-7", "label": "PyTorch FSDP", "status": "not_started", "prereq": ["D6-4"], "resources": ["FSDP 官方教程"], "notes": "" },
+        { "id": "D6-8", "label": "集合通信（NCCL/AllReduce拓扑）", "status": "not_started", "prereq": ["D4-5"], "resources": ["NCCL 文档", "字节跳动通信优化论文"], "notes": "" },
+        { "id": "D6-9", "label": "混合精度训练（BF16/FP8）", "status": "not_started", "prereq": ["D6-1"], "resources": ["FP8 训练论文(DeepSeek/NVIDIA)"], "notes": "" },
+        { "id": "D6-10", "label": "集群调度（Kubernetes/Slurm/故障容错）", "status": "not_started", "prereq": ["D2-4"], "resources": ["K8s 官方文档", "火山引擎/阿里训练平台公开实践"], "notes": "" }
+      ]
+    },
+    {
+      "id": "D7",
+      "label": "推理基础设施",
+      "priority": "P0-主攻",
+      "nodes": [
+        { "id": "D7-1", "label": "KV Cache 管理与 PagedAttention", "status": "not_started", "prereq": ["D5-5"], "resources": ["vLLM 论文(SOSP'23)"], "notes": "" },
+        { "id": "D7-2", "label": "Continuous Batching 与调度", "status": "not_started", "prereq": ["D7-1"], "resources": ["Orca 论文", "vLLM 调度器源码"], "notes": "" },
+        { "id": "D7-3", "label": "vLLM 框架（源码级）", "status": "not_started", "prereq": ["D7-2"], "resources": ["vllm-project/vllm 仓库"], "notes": "" },
+        { "id": "D7-4", "label": "TensorRT-LLM / 推理引擎", "status": "not_started", "prereq": ["D4-3"], "resources": ["NVIDIA TensorRT-LLM 文档"], "notes": "" },
+        { "id": "D7-5", "label": "投机解码（Speculative/Medusa/EAGLE）", "status": "not_started", "prereq": ["D5-5"], "resources": ["EAGLE/Medusa 论文"], "notes": "" },
+        { "id": "D7-6", "label": "推理服务化（Triton Server/TGI/压测）", "status": "not_started", "prereq": ["D7-3"], "resources": ["Triton 官方文档"], "notes": "" },
+        { "id": "D7-7", "label": "PD 分离与分布式推理（Prefill/Decode Disaggregation）", "status": "not_started", "prereq": ["D7-2"], "resources": ["Mooncake/Splitwise 论文"], "notes": "" },
+        { "id": "D7-8", "label": "推理成本与延迟优化（TTFT/TPOT/SLO）", "status": "not_started", "prereq": ["D7-6"], "resources": ["各大厂推理优化技术博客"], "notes": "" }
+      ]
+    },
+    {
+      "id": "D8",
+      "label": "模型压缩",
+      "priority": "P1-核心",
+      "nodes": [
+        { "id": "D8-1", "label": "量化（PTQ/QAT/INT8/FP8/INT4）", "status": "not_started", "prereq": ["D5-1"], "resources": ["GPTQ/AWQ 论文", "TensorRT 量化指南"], "notes": "" },
+        { "id": "D8-2", "label": "剪枝（结构化/非结构化）", "status": "not_started", "prereq": ["D5-1"], "resources": ["LLM-Pruner 论文"], "notes": "" },
+        { "id": "D8-3", "label": "知识蒸馏", "status": "not_started", "prereq": ["D5-3"], "resources": ["Distill 综述", "MiniLLM 论文"], "notes": "" },
+        { "id": "D8-4", "label": "低秩分解与参数高效化", "status": "not_started", "prereq": ["D1-1"], "resources": ["LoRA/SVD 压缩相关论文"], "notes": "" }
+      ]
+    },
+    {
+      "id": "D9",
+      "label": "存储与数据",
+      "priority": "P2-拓展",
+      "nodes": [
+        { "id": "D9-1", "label": "Checkpoint 管理与弹性训练", "status": "not_started", "prereq": ["D6-10"], "resources": ["CheckFreq/Gemini 论文"], "notes": "" },
+        { "id": "D9-2", "label": "训练数据管线（清洗/去重/配比）", "status": "not_started", "prereq": ["D5-2"], "resources": ["DataComp/RedPajama 技术报告"], "notes": "" },
+        { "id": "D9-3", "label": "向量数据库与检索（RAG基础）", "status": "not_started", "prereq": ["D5-1"], "resources": ["Milvus/FAISS 文档"], "notes": "" }
+      ]
+    },
+    {
+      "id": "D10",
+      "label": "前沿方向",
+      "priority": "P2-拓展",
+      "nodes": [
+        { "id": "D10-1", "label": "边缘/端侧推理（llama.cpp/MLC/手机部署）", "status": "not_started", "prereq": ["D8-1"], "resources": ["llama.cpp 仓库", "MLC-LLM 教程"], "notes": "" },
+        { "id": "D10-2", "label": "AI 编译器（TVM/MLIR/XLA/Triton Lang）", "status": "not_started", "prereq": ["D4-3"], "resources": ["Triton 官方教程", "MLIR 文档"], "notes": "" },
+        { "id": "D10-3", "label": "具身智能推理部署（机器人端实时推理）", "status": "not_started", "prereq": ["D7-4"], "resources": ["Figure/Tesla 公开技术分享"], "notes": "" },
+        { "id": "D10-4", "label": "长上下文优化（Sparse Attention/记忆压缩）", "status": "not_started", "prereq": ["D5-5"], "resources": ["StreamingLLM/InfLLM 论文"], "notes": "" },
+        { "id": "D10-5", "label": "Agent 时代的推理负载特征（工具调用/多轮/长程）", "status": "not_started", "prereq": ["D7-8"], "resources": ["各大厂 Agent Infra 实践文章"], "notes": "" }
+      ]
+    }
+  ]
+}
